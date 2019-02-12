@@ -1,4 +1,3 @@
-
 import React from "react";
 import pf from "petfinder-client";
 // import Carousel from "./Carousel";
@@ -9,13 +8,10 @@ const petfinder = pf({
 });
 
 class Details extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
+    state = {
       loading: true // It's going to take time to get back data from the API, when we get it back, the component is done loading and loading will be set to false.
     };
-  }
+
   componentDidMount() {
     petfinder.pet
       .get({
@@ -47,7 +43,7 @@ class Details extends React.Component {
   }
   render() {
     if (this.state.loading) {
-      return <h1 > loading… </h1>;
+      return <h1> loading… </h1>;
     }
 
     const {
@@ -58,13 +54,13 @@ class Details extends React.Component {
     } = this.state;
 
     return (
-      <div className = "details">
+      <div className="details">
         <div>
-        <h1>{name}</h1>
-        <h2> {`${animal} — ${breed} — ${location}`} </h2>
-        <p> {description} </p>
-       </div>
-       </div>
+          <h1>{name}</h1>
+          <h2>{`${animal} — ${breed} — ${location}`}</h2>
+          <p>{description}</p>
+        </div>
+      </div>
     );
   }
 }
